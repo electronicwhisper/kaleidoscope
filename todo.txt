@@ -1,10 +1,12 @@
 software
-  put folder online
-  get jquery together
   get accelerometer data
   get canvas drawing together
 
 hardware
   make measurements
   get mirror
-  
+
+
+
+notes
+  welcome17

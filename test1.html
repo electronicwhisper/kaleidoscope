@@ -1,0 +1,30 @@
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script>
+// $(function () {
+//   $("#info").text("blah");
+// });
+
+
+window.ondevicemotion = function(event) {
+  var ax = event.accelerationIncludingGravity.x;
+  var ay = event.accelerationIncludingGravity.y;
+  var az = event.accelerationIncludingGravity.z;
+  var r1 = event.rotationRate.alpha;
+  var r2 = event.rotationRate.beta;
+  var r3 = event.rotationRate.gamma;
+  
+  $("#info").html("accel: "+ax+", "+ay+", "+az+"<br />rotate: "+r1+", "+r2+", "+r3);
+};
+
+</script>
+</head>
+<body>
+
+<div id="info">
+  
+</div>
+
+</body>
+</html>
