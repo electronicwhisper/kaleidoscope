@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script>
+
+var width = 320;
+var height = 480;
+var backgroundColor = "0, 0, 0";
+
+$(function () {
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  
+  // initialize screen
+  ctx.fillStyle = "rgb("+backgroundColor+")";
+  ctx.fillRect(0, 0, width, height);
+  
+  setInterval(function () {
+    // draw a line
+    ctx.strokeStyle = "rgb(255,180,0)";
+    ctx.beginPath();  
+    ctx.moveTo(Math.random()*width, Math.random()*height);
+    ctx.lineTo(Math.random()*width, Math.random()*height);
+    ctx.stroke();
+
+    // fade
+    ctx.fillStyle = "rgba("+backgroundColor+", 0.02)";
+    ctx.fillRect(0, 0, width, height);
+    
+  }, 10);
+});
+
+</script>
+</head>
+<body>
+<canvas id="canvas" width="320" height="480"></canvas>
+</body>
+</html>
