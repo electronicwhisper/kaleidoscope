@@ -6,7 +6,9 @@
 
 var width = 320;
 var height = 480;
-var backgroundColor = "0, 0, 0";
+// var backgroundColor = "0, 0, 0";
+var backgroundColor = "255, 255, 255";
+
 
 $(function () {
   var canvas = document.getElementById("canvas");
@@ -18,7 +20,7 @@ $(function () {
   
   setInterval(function () {
     // draw a line
-    ctx.strokeStyle = "rgb(255,180,0)";
+    ctx.strokeStyle = "rgb(180,0,0)";
     ctx.beginPath();  
     ctx.moveTo(Math.random()*width, Math.random()*height);
     ctx.lineTo(Math.random()*width, Math.random()*height);
