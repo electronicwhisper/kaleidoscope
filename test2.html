@@ -31,6 +31,13 @@ $(function () {
     ctx.moveTo(Math.random()*width, Math.random()*height);
     ctx.lineTo(Math.random()*width, Math.random()*height);
     ctx.stroke();
+    
+    // draw a circle
+    ctx.fillStyle = color.HSV_HEX({H:hue, S:100, V:100});
+    ctx.beginPath();
+    ctx.arc(Math.random()*width, Math.random()*height, 10, 0, Math.PI*2, true); 
+    ctx.closePath();
+    ctx.fill();
 
     // fade
     ctx.globalCompositeOperation = "source-over";
