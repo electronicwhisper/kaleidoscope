@@ -9,17 +9,22 @@ $(function () {
 var ax = 0;
 var ay = 0;
 
+function lowPassFilter(oldValue, newValue, speed) {
+  // speed: 0 - slowest, 1 - fastest
+  return newValue*speed + oldValue*(1-speed);
+}
+
 
 window.ondevicemotion = function(event) {
   var axp = event.accelerationIncludingGravity.x;
   var ayp = event.accelerationIncludingGravity.y;
-  var diff = (axp - ax)^2 + (ayp - ay)^2;
   
-  var max = 10;
-  var color = Math.round((diff/max)*255);
+  ax = lowPassFilter(ax, axp, 0.5);
+  ay = lowPassFilter(ay, ayp, 0.5);
+  
   
   // $("#info").html("accel: "+ax+", "+ay+", "+az);
-  $("#info").css("background-color", "rgb("+color+","+color+","+color+")");
+  $("#info").css("background-color", "rgb("+Math.round((ax+10)/20*255)+",0,"+Math.round((ay+10)/20*255)+")");
   
   ax = axp;
   ay = ayp;
@@ -32,6 +37,8 @@ window.ondevicemotion = function(event) {
   
   
 };
+
+
 
 </script>
 </head>
