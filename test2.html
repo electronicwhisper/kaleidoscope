@@ -2,12 +2,14 @@
 <head>
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script src="color.js"></script>
 <script>
 
 var width = 320;
 var height = 480;
-// var backgroundColor = "0, 0, 0";
-var backgroundColor = "255, 255, 255";
+var backgroundColor = "0, 0, 0";
+
+var hue = 0;
 
 
 $(function () {
@@ -18,16 +20,21 @@ $(function () {
   ctx.fillStyle = "rgb("+backgroundColor+")";
   ctx.fillRect(0, 0, width, height);
   
+  
   setInterval(function () {
+    hue = (hue+1)%360;
+    ctx.strokeStyle = color.HSV_HEX({H:hue, S:100, V:100});
+    
     // draw a line
-    ctx.strokeStyle = "rgb(180,0,0)";
+    ctx.globalCompositeOperation = "lighter";
     ctx.beginPath();  
     ctx.moveTo(Math.random()*width, Math.random()*height);
     ctx.lineTo(Math.random()*width, Math.random()*height);
     ctx.stroke();
 
     // fade
-    ctx.fillStyle = "rgba("+backgroundColor+", 0.02)";
+    ctx.globalCompositeOperation = "source-over";
+    ctx.fillStyle = "rgba("+backgroundColor+", 0.01)";
     ctx.fillRect(0, 0, width, height);
     
   }, 1);
